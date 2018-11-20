@@ -1,14 +1,15 @@
 #include "system.h"
 
 
-System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, int curLeadTime, int reviewPeriod)
+System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, pair<int,int> initialOrder, int reviewPeriod)
 {
     this->demand = demand;
     this->demandProbability = demandProbability;
     this->leadTime = leadTime;
     this->leadTimeProbability = leadTimeProbability;
-    this->curLeadTime = curLeadTime;
     this->reviewPeriod = reviewPeriod;
+    memset(fill,0,sizeof(fill));
+    fill[initialOrder.first]=initialOrder.second;
     buildTables();
 }
 
@@ -24,11 +25,69 @@ void System::buildTables() {
     }
 }
 
-void System::buildSystem(int days, int carsShowRoomStart,int carsInventoryStart)
+void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart)
+{
+     int reviewCounter = reviewPeriod;
+     int currentLeadTime;
+  for (int curDay=0;curDay<=days;curDay++)
+  {
+        int carsShowroomCurrent =   curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd;
+        int carsInventoryCurrent = curDay==0? carsInventoryStart : this->days.back().carsInventoryEnd;
+        currentLeadTime = 0;
+        if(--reviewCounter==0)
+        {
+        reviewCounter = reviewPeriod;
+        currentLeadTime = getLeadTime();
+        this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
+        fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
+        }
+        else
+            this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
+  }
+}
+
+
+
+int System::getDemand()
+{
+    int random = rand() % 100 + 1; //random number generation
+    //Checking ranges and returning appropriate number
+    for (int i = 0;i < cumulativeDemand.size();i++)
+    {
+        if (i == 0)
+        {
+            if (random >= 1 && random <= cumulativeDemand[i])
+                return demand[i];
+        }
+        else if (random >cumulativeDemand[i-1] && random <= cumulativeDemand[i] ) {
+            return demand[i];
+        }
+    }
+    return -1;
+}
+
+
+int System::getLeadTime()
 {
 
+    int random = rand() % 100 + 1; //random number generation
 
 
-
-
+    //checking ranges and returning appropriate number
+    for (int i = 0;i < cumulativeLeadTime.size();i++)
+    {
+        if (i == 0)
+        {
+            if (random >= 1 && random <= cumulativeLeadTime[i])
+            {
+                return leadTime[i];
+            }
+        }
+        else if (random >cumulativeLeadTime[i - 1] && random <= cumulativeLeadTime[i]) {
+            return leadTime[i];
+        }
+    }
+    return -1;
 }
+
+

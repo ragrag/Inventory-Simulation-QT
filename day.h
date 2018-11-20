@@ -10,8 +10,10 @@ public:
     int carsShowroomStart;
     int carsInventoryEnd;
     int carsShowroomEnd;
+    int orderLeadTime;
     bool shortage;
     Day(int,int,int,int,int);
+    void offset();
 };
 
 #endif // DAY_H

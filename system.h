@@ -20,14 +20,16 @@ public:
     vector <double> cumulativeDemand;
     vector <double> cumulativeLeadTime;
     vector <Day> days;
-    int curLeadTime;
+    int fill[10000];
     int reviewPeriod;
 
     Result result;
 
-    System(vector<int>,vector<double>,vector<int>,vector<double>,int ,int);
+    System(vector<int>,vector<double>,vector<int>,vector<double>,pair<int,int> ,int);
     void buildTables();
-    void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8)
+    void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8);
+    int getDemand();
+    int getLeadTime();
 };
 
 #endif // SYSTEM_H
