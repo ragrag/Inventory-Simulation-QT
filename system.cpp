@@ -27,6 +27,8 @@ void System::buildTables() {
 
 void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart)
 {
+    this->days.clear();
+    memset(fill,0,sizeof(fill));
      int reviewCounter = reviewPeriod;
      int currentLeadTime;
   for (int curDay=0;curDay<=days;curDay++)
@@ -88,6 +90,27 @@ int System::getLeadTime()
         }
     }
     return -1;
+}
+
+Result System::calculateSystem(){
+
+    float endingShowroom = 0;
+    float endingInventory =0;
+    float shortageDays = 0;
+    float demand =0;
+    float leadTime = 0;
+    int numberOfOrders = 0;
+    for(auto day:days)
+    {
+        endingShowroom += day.carsShowroomEnd;
+        endingInventory += day.carsInventoryEnd;
+        shortageDays += (day.shortage? 1:0);
+        demand+=day.demand;
+        leadTime+=day.orderLeadTime;
+        numberOfOrders += (day.orderLeadTime>0? 1:0);
+    }
+
+return result = Result(endingShowroom/days.size() ,endingInventory/days.size(),shortageDays,demand/days.size(),leadTime/numberOfOrders);
 }
 
 

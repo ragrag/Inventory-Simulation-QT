@@ -30,6 +30,7 @@ public:
     void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8);
     int getDemand();
     int getLeadTime();
+    Result calculateSystem();
 };
 
 #endif // SYSTEM_H
