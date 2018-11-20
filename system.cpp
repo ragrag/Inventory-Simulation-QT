@@ -23,3 +23,12 @@ void System::buildTables() {
             cumulativeLeadTime.push_back(i == 0 ? leadTimeProbability[0] * 100 : cumulativeLeadTime[i - 1] + leadTimeProbability[i] * 100);
     }
 }
+
+void System::buildSystem(int days, int carsShowRoomStart,int carsInventoryStart)
+{
+
+
+
+
+
+}

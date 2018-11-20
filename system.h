@@ -22,10 +22,12 @@ public:
     vector <Day> days;
     int curLeadTime;
     int reviewPeriod;
+
     Result result;
 
-    System(vector<int>,vector<double>,vector<int>,vector<double>,int ,int,int carsShowroomStart = 4,int carsInventoryStart=8);
+    System(vector<int>,vector<double>,vector<int>,vector<double>,int ,int);
     void buildTables();
+    void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8)
 };
 
 #endif // SYSTEM_H
