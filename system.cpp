@@ -7,7 +7,6 @@ System::System(vector<int> demand,vector<double> demandProbability,vector<int> l
     this->demandProbability = demandProbability;
     this->leadTime = leadTime;
     this->leadTimeProbability = leadTimeProbability;
-    this->reviewPeriod = reviewPeriod;
     memset(fill,0,sizeof(fill));
     fill[initialOrder.first]=initialOrder.second;
     buildTables();
@@ -25,7 +24,7 @@ void System::buildTables() {
     }
 }
 
-void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart)
+void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,int reviewPeriod,int minimumInventory)
 {
     this->days.clear();
     memset(fill,0,sizeof(fill));
@@ -39,9 +38,13 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart)
         if(--reviewCounter==0)
         {
         reviewCounter = reviewPeriod;
+
         currentLeadTime = getLeadTime();
         this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
-        fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
+
+        if(this->days.back().carsInventoryEnd<=minimumInventory)
+            fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
+        else this->days.back().orderLeadTime = 0;
         }
         else
             this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
