@@ -25,9 +25,9 @@ public:
 
     Result result;
 
-    System(vector<int>,vector<double>,vector<int>,vector<double>,pair<int,int> ,int);
+    System(vector<int>,vector<double>,vector<int>,vector<double>,pair<int,int>);
     void buildTables();
-    void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8,int,int);
+    void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8,int reviewPeriod=0,int minimumInventoru = 0);
     int getDemand();
     int getLeadTime();
     Result calculateSystem();

@@ -1,7 +1,7 @@
 #include "system.h"
 
 
-System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, pair<int,int> initialOrder, int reviewPeriod)
+System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, pair<int,int> initialOrder)
 {
     this->demand = demand;
     this->demandProbability = demandProbability;
