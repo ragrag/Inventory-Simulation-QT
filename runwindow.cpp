@@ -44,7 +44,7 @@ runwindow::runwindow(QWidget *parent,System sys) :
       }
       ui->resultsTable->horizontalHeader()->setVisible(false);
 
-
+cout<<system.result.shortageDays<<" AAA "<<endl;
 
 
 

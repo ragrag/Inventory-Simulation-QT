@@ -118,7 +118,7 @@ Result System::calculateSystem(){
 
     float endingShowroom = 0;
     float endingInventory =0;
-    float shortageDays = 0;
+    int shortageDays = 0;
     float demand =0;
     float leadTime = 0;
     int numberOfOrders = 0;
@@ -138,7 +138,7 @@ Result System::calculateSystem(){
 
 
 
-return result = Result(endingShowroom/days.size(),endingInventory/days.size(),shortageDays,demand/days.size(),leadTime/numberOfOrders);
+return this->result = Result(endingShowroom/days.size(),endingInventory/days.size(),shortageDays,demand/days.size(),leadTime/numberOfOrders);
 }
 
 
