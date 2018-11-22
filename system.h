@@ -20,7 +20,7 @@ public:
     vector <double> cumulativeDemand;
     vector <double> cumulativeLeadTime;
     vector <Day> days;
-    int fill[10000];
+    int fill[101];
 
 
     Result result;

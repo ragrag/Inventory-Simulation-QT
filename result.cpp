@@ -35,11 +35,11 @@ void Result::print()
 float Result::operator[] (int i)
 {
   switch (i) {
-  case 0: return avgEndingShowroom;
-  case 1: return  avgEndingInventory;
-  case 2: return shortageDays;
-  case 3: return avgDemand;
-  case 4: return avgLeadTime;
+  case 0: return avgDemand;
+  case 1: return avgLeadTime;
+  case 2: return avgEndingShowroom;
+  case 3: return  avgEndingInventory;
+  case 4: return shortageDays;
   default: return -1;
   }
 }
