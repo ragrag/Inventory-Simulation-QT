@@ -54,13 +54,13 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
 
         this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
 
-        if(reviewPeriod==2)
-            cout<<curDay<<"   "<<reviewCounter<<"    "<<currentLeadTime<<"   Inventory End: "<<this->days.back().carsInventoryEnd<<" / "<<minimumInventory<<endl;
+      //  if(reviewPeriod==2)
+    //        cout<<curDay<<"   "<<reviewCounter<<"    "<<currentLeadTime<<"   Inventory End: "<<this->days.back().carsInventoryEnd<<" / "<<minimumInventory<<endl;
         if(this->days.back().carsInventoryEnd<=minimumInventory)
         {
             fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
-cout<<this->days.size()<<endl;
-    cout<<"IN"<<endl;
+//cout<<this->days.size()<<endl;
+  //  cout<<"IN"<<endl;
         }
         else this->days.back().orderLeadTime = 0;
         }
@@ -126,7 +126,11 @@ Result System::calculateSystem(){
     {
         endingShowroom += day.carsShowroomEnd;
         endingInventory += day.carsInventoryEnd;
-        shortageDays += (day.shortage? 1:0);
+        if(day.shortage)
+        {
+            shortageDays++;
+        }
+      //  shortageDays += (day.shortage? 1:0);
         demand+=day.demand;
         leadTime+=day.orderLeadTime;
         numberOfOrders += (day.orderLeadTime>0? 1:0);
