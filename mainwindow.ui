@@ -158,7 +158,7 @@
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>Days</string>
+              <string>Runs</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

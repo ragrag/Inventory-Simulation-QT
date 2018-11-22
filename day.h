@@ -5,6 +5,7 @@
 class Day
 {
 public:
+    int dayNumber;
     int demand;
     int carsInventoryStart;
     int carsShowroomStart;
@@ -12,8 +13,9 @@ public:
     int carsShowroomEnd;
     int orderLeadTime;
     bool shortage;
-    Day(int,int,int,int,int);
+    Day(int,int,int,int,int,int);
     void offset();
+    float operator[] (int i);
 };
 
 #endif // DAY_H

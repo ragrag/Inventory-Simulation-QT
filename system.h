@@ -20,11 +20,13 @@ public:
     vector <double> cumulativeDemand;
     vector <double> cumulativeLeadTime;
     vector <Day> days;
+    pair<int,int> initialOrder;
     int fill[101];
 
 
     Result result;
 
+    System();
     System(vector<int>,vector<double>,vector<int>,vector<double>,pair<int,int>);
     void buildTables();
     void buildSystem(int, int carsShowroomStart = 4,int carsInventoryStart=8,int reviewPeriod=0,int minimumInventoru = 0);

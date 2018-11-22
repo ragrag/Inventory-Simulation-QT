@@ -179,4 +179,10 @@ void MainWindow::on_viewReviewPeriod_Btn_clicked()
 void MainWindow::on_viewRun_Btn_clicked()
 {
 
+    int idx =ui->dayList->currentIndex().row();
+    if(idx!=-1)
+    {
+          runWindowObj = new runwindow(this,runListUnsorted[minimumThreshold][reviewPeriod].second.first[idx]);
+          runWindowObj->show();
+    }
 }

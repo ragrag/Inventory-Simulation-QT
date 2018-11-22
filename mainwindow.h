@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
+#include "runwindow.h"
 #include <iostream>
 namespace Ui {
 class MainWindow;
@@ -35,7 +36,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    runwindow *runWindowObj;
     vector <vector < pair <int, pair <vector<System> ,Result> >  > > runList;
     vector <vector < pair <int, pair <vector<System> ,Result> >  > > runListUnsorted;
     int days;

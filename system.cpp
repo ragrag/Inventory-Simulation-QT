@@ -1,6 +1,12 @@
 #include "system.h"
 
 
+System::System()
+{
+
+}
+
+
 System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, pair<int,int> initialOrder)
 {
     this->demand = demand;
@@ -8,6 +14,7 @@ System::System(vector<int> demand,vector<double> demandProbability,vector<int> l
     this->leadTime = leadTime;
     this->leadTimeProbability = leadTimeProbability;
     memset(fill,0,sizeof(fill));
+    this->initialOrder = initialOrder;
     fill[initialOrder.first]=initialOrder.second;
     buildTables();
 }
@@ -27,9 +34,10 @@ void System::buildTables() {
 void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,int reviewPeriod,int minimumInventory)
 {
     this->days.clear();
-    memset(fill,0,sizeof(fill));
      int reviewCounter = reviewPeriod;
      int currentLeadTime;
+     memset(fill,0,sizeof(fill));
+     fill[initialOrder.first]=initialOrder.second;
   for (int curDay=0;curDay<=days;curDay++)
   {
         int carsShowroomCurrent =   curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd;
@@ -40,15 +48,16 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
         reviewCounter = reviewPeriod;
 
         currentLeadTime = getLeadTime();
-        this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
+        this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
 
         if(this->days.back().carsInventoryEnd<=minimumInventory)
             fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
         else this->days.back().orderLeadTime = 0;
         }
         else
-            this->days.push_back( Day(getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
+            this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
   }
+
 }
 
 
