@@ -29,16 +29,19 @@ SOURCES += \
         mainwindow.cpp \
     day.cpp \
     system.cpp \
-    result.cpp
+    result.cpp \
+    runwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     day.h \
     system.h \
-    result.h
+    result.h \
+    runwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    runwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

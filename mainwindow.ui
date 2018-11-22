@@ -169,9 +169,9 @@
             <widget class="QListWidget" name="dayList"/>
            </item>
            <item>
-            <widget class="QPushButton" name="viewDay_Btn">
+            <widget class="QPushButton" name="viewRun_Btn">
              <property name="text">
-              <string>View Day Details</string>
+              <string>View Selected Run Data</string>
              </property>
             </widget>
            </item>

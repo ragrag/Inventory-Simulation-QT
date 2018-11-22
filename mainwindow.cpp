@@ -121,7 +121,7 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
             ui->dayList->clear();
               for(int i=1;i<=days;i++)
               {
-                  ui->dayList->addItem("Day :"+QString::number(i));
+                  ui->dayList->addItem("Run :"+QString::number(i));
               }
 
 
@@ -176,7 +176,7 @@ void MainWindow::on_viewReviewPeriod_Btn_clicked()
     }
 }
 
-void MainWindow::on_viewDay_Btn_clicked()
+void MainWindow::on_viewRun_Btn_clicked()
 {
 
 }

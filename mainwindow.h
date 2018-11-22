@@ -31,7 +31,7 @@ private slots:
 
     void on_viewReviewPeriod_Btn_clicked();
 
-    void on_viewDay_Btn_clicked();
+    void on_viewRun_Btn_clicked();
 
 private:
     Ui::MainWindow *ui;
