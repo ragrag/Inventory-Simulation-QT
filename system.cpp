@@ -40,18 +40,28 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
      fill[initialOrder.first]=initialOrder.second;
   for (int curDay=0;curDay<days;curDay++)
   {
-        int carsShowroomCurrent =   curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd;
-        int carsInventoryCurrent = curDay==0? carsInventoryStart : this->days.back().carsInventoryEnd;
+        int carsShowroomCurrent = (  curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd);
+        int carsInventoryCurrent = (curDay==0? carsInventoryStart : this->days.back().carsInventoryEnd);
         currentLeadTime = 0;
+
         if(--reviewCounter==0)
         {
+
         reviewCounter = reviewPeriod;
 
         currentLeadTime = getLeadTime();
+
+
         this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
 
+        if(reviewPeriod==2)
+            cout<<curDay<<"   "<<reviewCounter<<"    "<<currentLeadTime<<"   Inventory End: "<<this->days.back().carsInventoryEnd<<" / "<<minimumInventory<<endl;
         if(this->days.back().carsInventoryEnd<=minimumInventory)
+        {
             fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
+cout<<this->days.size()<<endl;
+    cout<<"IN"<<endl;
+        }
         else this->days.back().orderLeadTime = 0;
         }
         else

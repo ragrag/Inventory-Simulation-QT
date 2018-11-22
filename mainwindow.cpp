@@ -69,7 +69,7 @@ for(int i=1;i<=8;i++)
     {
         res =  Result();
         systems.clear();
-        for(int i=0;i<runs;i++)
+        for(int k=0;k<runs;k++)
         {
             sys.buildSystem(days,4,2,j,i);
             systems.push_back(sys);
@@ -182,7 +182,7 @@ void MainWindow::on_viewRun_Btn_clicked()
     int idx =ui->dayList->currentIndex().row();
     if(idx!=-1)
     {
-          runWindowObj = new runwindow(this,runListUnsorted[minimumThreshold][reviewPeriod].second.first[idx]);
+          runWindowObj = new runwindow(this,runListUnsorted[minimumThreshold][reviewPeriod-1].second.first[idx]);
           runWindowObj->show();
     }
 }

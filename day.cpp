@@ -11,19 +11,19 @@ Day::Day(int dayNumber,int demand,int carsShowroomStart,int carsInventoryStart,i
     offset();
     if(demand > (this->carsShowroomStart+this->carsInventoryStart))
     {
-        carsShowroomEnd = 0;
-        carsInventoryEnd = 0;
+        this->carsShowroomEnd = 0;
+        this->carsInventoryEnd = 0;
         shortage = true;
     }
     else {
-        if(carsInventoryStart >= demand )
+        if(this->carsInventoryStart >= demand )
         {
-            carsShowroomEnd = carsShowroomStart;
-            carsInventoryEnd = carsInventoryStart-demand;
+            this->carsShowroomEnd = this->carsShowroomStart;
+            this->carsInventoryEnd = this->carsInventoryStart-demand;
         }
         else {
-            carsShowroomEnd = demand - carsInventoryStart;
-            carsInventoryEnd = 0;
+            this->carsShowroomEnd = this->carsShowroomStart - (demand - this->carsInventoryStart);
+            this->carsInventoryEnd = 0;
         }
     }
 }
@@ -32,7 +32,7 @@ void Day::offset(){
 
 if(carsShowroomStart >4)
 {
-    carsInventoryStart+= carsShowroomStart-4;
+    carsInventoryStart+= (carsShowroomStart-4);
     carsShowroomStart = 4;
 }
 if(carsInventoryStart > 8)

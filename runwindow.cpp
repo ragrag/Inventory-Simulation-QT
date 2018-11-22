@@ -11,8 +11,8 @@ runwindow::runwindow(QWidget *parent,System sys) :
 
 
     QStringList lst;
-    lst <<"Day"<<"Demand "<<"Lead Time"<<"Starting Cars Showroom"<<"Starting Cars Inventory"
-       <<"Ending Cars Showroom"<<"Ending Cars Inventory"<<"Shortage";
+    lst <<"Day"<<"Demand "<<"Lead Time"<<"Start Showroom"<<"Start Inventory"
+       <<"End Showroom"<<"End Inventory"<<"Shortage";
      ui->calendarTable->setColumnCount(8);
      ui->calendarTable->setRowCount((int)system.days.size());
      ui->calendarTable->setHorizontalHeaderLabels(lst);
