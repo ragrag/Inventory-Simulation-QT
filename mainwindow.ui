@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
-    <height>580</height>
+    <width>829</width>
+    <height>595</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>30</x>
       <y>10</y>
-      <width>641</width>
-      <height>551</height>
+      <width>761</width>
+      <height>581</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -156,6 +156,64 @@
             </widget>
            </item>
            <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Days</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListWidget" name="dayList"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewDay_Btn">
+             <property name="text">
+              <string>View Day Details</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="probability_Btn">
+             <property name="text">
+              <string>Probability Tables and Theoretical Averages</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="charts_Btn">
+             <property name="text">
+              <string>View Charts</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Inventory Minimum Thresholds</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListWidget" name="minimumList"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="selectMinimumThreshold">
+             <property name="text">
+              <string>View Details</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="reviewPeriodLabel">
              <property name="text">
               <string>Review Periods (Sorted by Shortage Days)</string>
@@ -170,30 +228,6 @@
            </item>
            <item>
             <widget class="QPushButton" name="viewReviewPeriod_Btn">
-             <property name="text">
-              <string>View Details</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>All Inventory Minimum Values</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QListWidget" name="minimumList"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="selectMinimumThreshold">
              <property name="text">
               <string>View Details</string>
              </property>

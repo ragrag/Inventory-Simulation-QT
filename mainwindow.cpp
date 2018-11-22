@@ -91,14 +91,16 @@ ui->minimumList->clear();
       ui->minimumList->addItem("Minimum Threshold :"+QString::number(i)+ ", Minimum Shortage : "+QString::number(runList[i][0].second.second.shortageDays));
   }
 
-display(runs,days,reviewPeriod,minimumThreshold);
+display(runs,days,minimumThreshold,reviewPeriod);
 }
 
 void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod)
 {
     //Displaying
+        this->minimumThreshold = minimumThreshold;
+        this->reviewPeriod = reviewPeriod;
+        ui->reviewPeriodLabel->setText("Review Periods (Sorted by Shortage Days, THS : "+QString::number(minimumThreshold));
           ui->resultsLabel->setText("Results : "+QString::number(runs) +" runs, "+QString::number(days)+" Days\n"+"Minimum Threshold : "+QString::number(minimumThreshold)+", Review Period : "+QString::number(reviewPeriod));
-
 
           for(int i=0;i<5;i++)
           {
@@ -115,6 +117,12 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
                 ui->reviewPeriodList->addItem("Review Period :"+QString::number(runList[minimumThreshold][i].first)+ " Shortage : "+QString::number(runList[minimumThreshold][i].second.second.shortageDays));
             }
 
+
+            ui->dayList->clear();
+              for(int i=1;i<=days;i++)
+              {
+                  ui->dayList->addItem("Day :"+QString::number(i));
+              }
 
 
 
@@ -156,4 +164,19 @@ void MainWindow::on_selectMinimumThreshold_clicked()
     {
           display(runs,days,idx+1,reviewPeriod);
     }
+}
+
+void MainWindow::on_viewReviewPeriod_Btn_clicked()
+{
+
+    int idx =ui->reviewPeriodList->currentIndex().row();
+    if(idx!=-1)
+    {
+          display(runs,days,minimumThreshold,runList[minimumThreshold][idx].first);
+    }
+}
+
+void MainWindow::on_viewDay_Btn_clicked()
+{
+
 }
