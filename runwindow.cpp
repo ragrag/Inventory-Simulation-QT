@@ -24,6 +24,7 @@ runwindow::runwindow(QWidget *parent,System sys) :
      {
          for(int j=0;j<8;j++)
          {
+
             ui->calendarTable->setItem(i,j,new QTableWidgetItem(QString::number(system.days[i][j])));
          }
 
@@ -38,6 +39,7 @@ runwindow::runwindow(QWidget *parent,System sys) :
       ui->resultsTable->setVerticalHeaderLabels(lstRes);
       for(int i=0;i<5;i++)
       {
+           cout<<i<<" "<<system.result[i]<<endl;
           ui->resultsTable->setItem(i,0,new QTableWidgetItem( QString::number(system.result[i]) ));
       }
       ui->resultsTable->horizontalHeader()->setVisible(false);

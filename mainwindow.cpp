@@ -119,7 +119,7 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
 
 
             ui->dayList->clear();
-              for(int i=1;i<=days;i++)
+              for(int i=1;i<=runs;i++)
               {
                   ui->dayList->addItem("Run :"+QString::number(i));
               }

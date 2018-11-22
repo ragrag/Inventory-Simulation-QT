@@ -38,7 +38,7 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
      int currentLeadTime;
      memset(fill,0,sizeof(fill));
      fill[initialOrder.first]=initialOrder.second;
-  for (int curDay=0;curDay<=days;curDay++)
+  for (int curDay=0;curDay<days;curDay++)
   {
         int carsShowroomCurrent =   curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd;
         int carsInventoryCurrent = curDay==0? carsInventoryStart : this->days.back().carsInventoryEnd;
@@ -122,7 +122,9 @@ Result System::calculateSystem(){
         numberOfOrders += (day.orderLeadTime>0? 1:0);
     }
 
-return result = Result(endingShowroom/days.size() ,endingInventory/days.size(),shortageDays,demand/days.size(),leadTime/numberOfOrders);
+
+
+return result = Result(endingShowroom/days.size(),endingInventory/days.size(),shortageDays,demand/days.size(),leadTime/numberOfOrders);
 }
 
 
