@@ -38,8 +38,8 @@ float Result::operator[] (int i)
   case 0: return avgDemand;
   case 1: return avgLeadTime;
   case 2: return avgEndingShowroom;
-  case 3: return  (float )avgEndingInventory;
-  case 4: return (float ) shortageDays;
+  case 3: return  (float)avgEndingInventory;
+  case 4: return (float) shortageDays;
   default: return -1;
   }
 }

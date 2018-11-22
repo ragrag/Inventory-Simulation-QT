@@ -32,7 +32,7 @@ runwindow::runwindow(QWidget *parent,System sys) :
 
 
      QStringList lstRes;
-     lstRes <<"Average Demand"<<"Average Order Lead Time"<<"Average Ending Showroom"<<"Average Ending Inside"<<"Shortage Days";
+     lstRes <<"Average Demand"<<"Average Order Lead Time"<<"Average Ending Showroom"<<"Average Ending Inventory"<<"Shortage Days";
       ui->resultsTable->setColumnCount(1);
       ui->resultsTable->setRowCount(5);
       ui->resultsTable->setVerticalHeaderLabels(lstRes);
