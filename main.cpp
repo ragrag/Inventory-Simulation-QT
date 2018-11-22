@@ -17,7 +17,7 @@ return a.second.second.shortageDays < b.second.second.shortageDays;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
- srand(time(NULL));
+ srand(1);
 
     vector <int > d ={0,1,2,3,4} ;
     vector <double> dp = {0.05, 0.28, 0.37, 0.20, 0.10};
@@ -36,7 +36,7 @@ vector <vector < pair <int, pair <vector<System> ,Result> >  > > runList(9);
     Result res;
     vector <System> systems;
     float shortage = 10e5;
-    int minimumInventory ;
+    int minimumInventory;
 for(int i=1;i<=8;i++)
 {
     for(int j=1;j<=days;j++)
