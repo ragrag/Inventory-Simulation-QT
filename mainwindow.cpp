@@ -65,7 +65,7 @@ void MainWindow::on_beginSimulationBtn_clicked()
 clear();
 for(int i=1;i<=8;i++)
 {
-    for(int j=1;j<=days;j++)
+    for(int j=1;j<=30;j++)
     {
         res =  Result();
         systems.clear();
@@ -113,7 +113,7 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
 
 
           ui->reviewPeriodList->clear();
-            for(int i=0;i<days;i++)
+            for(int i=0;i<runList[minimumThreshold].size();i++)
             {
                 ui->reviewPeriodList->addItem("Review Period :"+QString::number(runList[minimumThreshold][i].first)+ " Shortage : "+QString::number(runList[minimumThreshold][i].second.second.shortageDays));
             }
