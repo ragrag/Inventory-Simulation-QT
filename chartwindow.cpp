@@ -328,7 +328,7 @@ void ChartWindow::on_avgInventoryHLineBtn_clicked()
 
 void ChartWindow::on_shortageLineBtn_clicked()
 {
-    vector <float> mp;h
+    vector <float> mp;
     for (auto v : runList)
     {
        mp.push_back(v.result.shortageDays);

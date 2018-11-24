@@ -43,6 +43,20 @@
       <item>
        <widget class="QTableWidget" name="resultsTable"/>
       </item>
+      <item>
+       <widget class="QPushButton" name="demandLineBtn">
+        <property name="text">
+         <string>Demand Line Chart</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="leadTimeBtn">
+        <property name="text">
+         <string>Order Lead Time Line Chart</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
