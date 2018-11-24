@@ -7,7 +7,10 @@
 #include <algorithm>
 #include <ctime>
 #include "runwindow.h"
+#include "probabilitytable.h"
+#include "chartwindow.h"
 #include <iostream>
+
 namespace Ui {
 class MainWindow;
 }
@@ -34,9 +37,15 @@ private slots:
 
     void on_viewRun_Btn_clicked();
 
+    void on_probability_Btn_clicked();
+
+    void on_charts_Btn_clicked();
+
 private:
     Ui::MainWindow *ui;
     runwindow *runWindowObj;
+    probabilityTable *probabilityTableWindow;
+    ChartWindow *chartsWindow;
     vector <vector < pair <int, pair <vector<System> ,Result> >  > > runList;
     vector <vector < pair <int, pair <vector<System> ,Result> >  > > runListUnsorted;
     int days;

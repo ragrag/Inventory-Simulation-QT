@@ -39,16 +39,9 @@ runwindow::runwindow(QWidget *parent,System sys) :
       ui->resultsTable->setVerticalHeaderLabels(lstRes);
       for(int i=0;i<5;i++)
       {
-           cout<<i<<" "<<system.result[i]<<endl;
           ui->resultsTable->setItem(i,0,new QTableWidgetItem( QString::number(system.result[i]) ));
       }
       ui->resultsTable->horizontalHeader()->setVisible(false);
-
-cout<<system.result.shortageDays<<" AAA "<<endl;
-
-
-
-
 
 
 }

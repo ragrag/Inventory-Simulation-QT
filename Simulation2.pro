@@ -4,6 +4,9 @@
 #
 #-------------------------------------------------
 
+
+include (C:\Qwt-6.1.3\features\qwt.prf)
+
 QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -30,18 +33,26 @@ SOURCES += \
     day.cpp \
     system.cpp \
     result.cpp \
-    runwindow.cpp
+    runwindow.cpp \
+    probabilitytable.cpp \
+    chartwindow.cpp \
+    histogramplot.cpp
 
 HEADERS += \
         mainwindow.h \
     day.h \
     system.h \
     result.h \
-    runwindow.h
+    runwindow.h \
+    probabilitytable.h \
+    chartwindow.h \
+    histogramplot.h
 
 FORMS += \
         mainwindow.ui \
-    runwindow.ui
+    runwindow.ui \
+    probabilitytable.ui \
+    chartwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

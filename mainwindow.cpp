@@ -187,3 +187,23 @@ void MainWindow::on_viewRun_Btn_clicked()
           runWindowObj->show();
     }
 }
+
+void MainWindow::on_probability_Btn_clicked()
+{
+    vector <int > d ={0,1,2,3,4} ;
+    vector <double> dp = {0.05, 0.28, 0.37, 0.20, 0.10};
+    vector <int> l = {1,2,3};
+    vector <double> lp = {0.55 , 0.35, 0.10};
+
+    System system = System(d,dp,l,lp,make_pair(2,5));
+
+
+      probabilityTableWindow = new probabilityTable(this,system);
+      probabilityTableWindow->show();
+}
+
+void MainWindow::on_charts_Btn_clicked()
+{
+    chartsWindow = new ChartWindow(this,runListUnsorted[minimumThreshold][reviewPeriod].second.first);
+    chartsWindow->show();
+}

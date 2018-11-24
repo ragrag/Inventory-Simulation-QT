@@ -38,6 +38,7 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
      int currentLeadTime;
      memset(fill,0,sizeof(fill));
      fill[initialOrder.first]=initialOrder.second;
+     int lastOrder = initialOrder.first;
   for (int curDay=0;curDay<days;curDay++)
   {
         int carsShowroomCurrent = (  curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd);
@@ -56,8 +57,9 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
 
       //  if(reviewPeriod==2)
     //        cout<<curDay<<"   "<<reviewCounter<<"    "<<currentLeadTime<<"   Inventory End: "<<this->days.back().carsInventoryEnd<<" / "<<minimumInventory<<endl;
-        if(this->days.back().carsInventoryEnd<=minimumInventory)
+        if(this->days.back().carsInventoryEnd<=minimumInventory && curDay >=lastOrder)
         {
+            lastOrder =curDay+currentLeadTime+1;
             fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
 //cout<<this->days.size()<<endl;
   //  cout<<"IN"<<endl;
