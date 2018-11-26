@@ -128,7 +128,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Theoretical Average : 2</string>
+        <string>Theoretical Average : 1.55</string>
        </property>
       </widget>
      </item>
