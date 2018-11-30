@@ -102,6 +102,8 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
     //Displaying
         this->minimumThreshold = minimumThreshold;
         this->reviewPeriod = reviewPeriod;
+
+    ui->optimalLabel->setText("Optimal Review Period : " + QString::number(runList[minimumThreshold][0].first));
         ui->reviewPeriodLabel->setText("Review Periods (Sorted by Shortage Days, THS : "+QString::number(minimumThreshold));
           ui->resultsLabel->setText("Results : "+QString::number(runs) +" runs, "+QString::number(days)+" Days\n"+"Minimum Threshold : "+QString::number(minimumThreshold)+", Review Period : "+QString::number(reviewPeriod));
 
