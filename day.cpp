@@ -1,7 +1,10 @@
 #include "day.h"
 
+
+//A class for the day info
 Day::Day(int dayNumber,int demand,int carsShowroomStart,int carsInventoryStart,int orderLeadTime, int fill)
 {
+    //Day Variables initialization
     this->dayNumber = dayNumber;
     this->demand=demand;
     this->carsShowroomStart = carsShowroomStart+fill;
@@ -9,13 +12,15 @@ Day::Day(int dayNumber,int demand,int carsShowroomStart,int carsInventoryStart,i
     this->orderLeadTime = orderLeadTime;
     this->shortage = false;
     offset();
+
+    //Check if demand > current cars & set shortage accordingly
     if(demand > (this->carsShowroomStart+this->carsInventoryStart))
     {
         this->carsShowroomEnd = 0;
         this->carsInventoryEnd = 0;
         shortage = true;
     }
-    else {
+    else {   //Calculate new ending values for inventory and showroom
         if(this->carsInventoryStart >= demand )
         {
             this->carsShowroomEnd = this->carsShowroomStart;
@@ -28,6 +33,7 @@ Day::Day(int dayNumber,int demand,int carsShowroomStart,int carsInventoryStart,i
     }
 }
 
+//Put extra cars in showroom in inventory to avoid overfilling maximum capacity
 void Day::offset(){
 
 if(carsShowroomStart >4)

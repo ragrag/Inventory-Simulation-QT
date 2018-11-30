@@ -1,6 +1,9 @@
 #include "chartwindow.h"
 #include "ui_chartwindow.h"
 #include <vector>
+
+
+//GUI for charts
 ChartWindow::ChartWindow(QWidget *parent,vector <System > runList) :
     QMainWindow(parent),
     ui(new Ui::ChartWindow)
@@ -22,7 +25,7 @@ ChartWindow::~ChartWindow()
 
 
 
-
+//Creating a histogram
 void ChartWindow::createHistogram(map<float,int> mp,string title) //Creating Histogram
 {
 
@@ -88,7 +91,7 @@ void ChartWindow::createHistogram(map<float,int> mp,string title) //Creating His
 }
 
 
-
+//Creating a line chart
 template<typename T> void ChartWindow::createLineChart(T mp,string title) //Creating Line Chart
 {
     QLineSeries *series = new QLineSeries();
@@ -124,7 +127,7 @@ template<typename T> void ChartWindow::createLineChart(T mp,string title) //Crea
 
 }
 
-
+//Creating a bar chart
 template<typename T> void ChartWindow::createBarChart(T mp,string title) //Creating Bar Chart
 {
 

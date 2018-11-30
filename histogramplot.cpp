@@ -13,6 +13,8 @@
 
 #include <QString>
 #include <iostream>
+
+//Histogram plotting in QWT
 using namespace std;
 class Histogram: public QwtPlotHistogram
 {

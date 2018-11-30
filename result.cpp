@@ -1,5 +1,7 @@
 #include "result.h"
+//This class has all the results along wtth over loaded operators to sum and devide to get the average
 
+//Constructor 1
 Result::Result()
 {
     this->avgDemand=0;
@@ -10,6 +12,7 @@ Result::Result()
 }
 
 
+//Constructor 2
 Result::Result( float avgEndingShowroom, float avgEndingInventory,float shortageDays,float avgDemand ,float avgLeadTime)
 {
     this->avgDemand=avgDemand;
@@ -20,6 +23,8 @@ Result::Result( float avgEndingShowroom, float avgEndingInventory,float shortage
 }
 
 
+
+//Printing the results
 void Result::print()
 {
    cout<< this->avgEndingShowroom<<endl<<

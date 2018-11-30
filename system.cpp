@@ -1,12 +1,12 @@
 #include "system.h"
 
-
+//This class acts as the main container for all the days in the system as well as building and calculating the results
 System::System()
 {
 
 }
 
-
+//Constructor
 System::System(vector<int> demand,vector<double> demandProbability,vector<int> leadTime,vector<double> leadTimeProbability, pair<int,int> initialOrder)
 {
     this->demand = demand;
@@ -19,6 +19,8 @@ System::System(vector<int> demand,vector<double> demandProbability,vector<int> l
     buildTables();
 }
 
+
+//Build cumulative probability tables
 void System::buildTables() {
     cumulativeDemand.clear();
     cumulativeLeadTime.clear();
@@ -31,41 +33,40 @@ void System::buildTables() {
     }
 }
 
-
+//Building the system
 void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,int reviewPeriod,int minimumInventory)
 {
-    this->days.clear();
-     int reviewCounter = reviewPeriod;
-     int currentLeadTime;
-     memset(fill,0,sizeof(fill));
-     fill[initialOrder.first]=initialOrder.second;
-     int lastOrder = initialOrder.first;
-  for (int curDay=0;curDay<days;curDay++)
+    this->days.clear(); //clear days
+     int reviewCounter = reviewPeriod; //default review period set
+     int currentLeadTime;            //used as variable that holds the lead time
+     memset(fill,0,sizeof(fill)); //Array that holds the number of cars to be added in any given day
+     fill[initialOrder.first]=initialOrder.second; //marking already made order before the program starts
+     int lastOrder = initialOrder.first; //If an order is made before the program starts
+  for (int curDay=0;curDay<days;curDay++)    //iterate over all the days
   {
+                                    //get current cars (starting)
         int carsShowroomCurrent = (  curDay==0? carsShowroomStart : this->days.back().carsShowroomEnd);
         int carsInventoryCurrent = (curDay==0? carsInventoryStart : this->days.back().carsInventoryEnd);
         currentLeadTime = 0;
 
+        //Check if review period is reached
         if(--reviewCounter==0)
         {
 
-        reviewCounter = reviewPeriod;
+        reviewCounter = reviewPeriod; //reset review period
 
-        currentLeadTime = getLeadTime();
+        currentLeadTime = getLeadTime(); //calculate lead time
 
 
-        this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
+        this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay])); //add day to days
 
-      //  if(reviewPeriod==2)
-    //        cout<<curDay<<"   "<<reviewCounter<<"    "<<currentLeadTime<<"   Inventory End: "<<this->days.back().carsInventoryEnd<<" / "<<minimumInventory<<endl;
+                //Check if minimum threshold is reached
         if(this->days.back().carsInventoryEnd<=minimumInventory && curDay >=lastOrder)
         {
             lastOrder =curDay+currentLeadTime+1;
             fill[curDay+currentLeadTime+1] = (4-this->days.back().carsShowroomEnd )+ (8-this->days.back().carsInventoryEnd);
-//cout<<this->days.size()<<endl;
-  //  cout<<"IN"<<endl;
         }
-        else this->days.back().orderLeadTime = 0;
+        else this->days.back().orderLeadTime = 0; //if not reset lead time to 0
         }
         else
             this->days.push_back( Day((curDay+1),getDemand(),carsShowroomCurrent,carsInventoryCurrent,currentLeadTime,fill[curDay]));
@@ -73,7 +74,7 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
 
 }
 
-int System::getDemand()
+int System::getDemand() //Get random demand
 {
     int random = rand() % 100 + 1; //random number generation
     //Checking ranges and returning appropriate number
@@ -92,7 +93,7 @@ int System::getDemand()
 }
 
 
-int System::getLeadTime()
+int System::getLeadTime() //Get random lead time
 {
 
     int random = rand() % 100 + 1; //random number generation
@@ -115,6 +116,8 @@ int System::getLeadTime()
     return -1;
 }
 
+
+//Calculating the results
 Result System::calculateSystem(){
 
     float endingShowroom = 0;
@@ -123,7 +126,7 @@ Result System::calculateSystem(){
     float demand =0;
     float leadTime = 0;
     int numberOfOrders = 0;
-    for(auto day:days)
+    for(auto day:days)//accumilating values
     {
         endingShowroom += day.carsShowroomEnd;
         endingInventory += day.carsInventoryEnd;
@@ -131,7 +134,6 @@ Result System::calculateSystem(){
         {
             shortageDays++;
         }
-      //  shortageDays += (day.shortage? 1:0);
         demand+=day.demand;
         leadTime+=day.orderLeadTime;
         numberOfOrders += (day.orderLeadTime>0? 1:0);

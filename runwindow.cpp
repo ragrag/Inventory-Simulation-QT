@@ -1,6 +1,8 @@
 #include "runwindow.h"
 #include "ui_runwindow.h"
 
+
+//Display individual run info
 runwindow::runwindow(QWidget *parent,System sys) :
     QMainWindow(parent),
     ui(new Ui::runwindow)
@@ -10,6 +12,8 @@ runwindow::runwindow(QWidget *parent,System sys) :
 
 
 
+
+    //Calender table
     QStringList lst;
     lst <<"Day"<<"Demand "<<"Lead Time"<<"Start Showroom"<<"Start Inventory"
        <<"End Showroom"<<"End Inventory"<<"Shortage";
@@ -24,7 +28,11 @@ runwindow::runwindow(QWidget *parent,System sys) :
      {
          for(int j=0;j<8;j++)
          {
-            if (j==7)
+             if (j==2)
+             {
+                 ui->calendarTable->setItem(i,j,new QTableWidgetItem(system.days[i][j]==0? "-" : QString::number(system.days[i][j])));
+             }
+             else if (j==7)
             {
                 ui->calendarTable->setItem(i,j,new QTableWidgetItem(system.days[i][j]==0? "No" : "Yes"));
             }
@@ -35,7 +43,7 @@ runwindow::runwindow(QWidget *parent,System sys) :
      }
 
 
-
+//Results table
      QStringList lstRes;
      lstRes <<"Average Demand"<<"Average Order Lead Time"<<"Average Ending Showroom"<<"Average Ending Inventory"<<"Shortage Days";
       ui->resultsTable->setColumnCount(1);
@@ -55,6 +63,8 @@ runwindow::~runwindow()
     delete ui;
 }
 
+
+//Line chart display
 void runwindow::on_demandLineBtn_clicked()
 {
 
@@ -92,6 +102,9 @@ void runwindow::on_demandLineBtn_clicked()
 
 }
 
+
+
+//Line chart display
 void runwindow::on_leadTimeBtn_clicked()
 {
 

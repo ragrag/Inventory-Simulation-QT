@@ -1,6 +1,8 @@
 #include "probabilitytable.h"
 #include "ui_probabilitytable.h"
 
+
+//View probability tables
 probabilityTable::probabilityTable(QWidget *parent,System sys) :
     QMainWindow(parent),
     ui(new Ui::probabilityTable)
