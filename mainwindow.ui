@@ -188,7 +188,7 @@
            <item>
             <widget class="QPushButton" name="probability_Btn">
              <property name="text">
-              <string>Probability Tables and Theoretical Averages</string>
+              <string>Probability Tables</string>
              </property>
             </widget>
            </item>
