@@ -125,6 +125,16 @@
             <widget class="QTableWidget" name="resultsTable">
              <row>
               <property name="text">
+               <string>Average Demand (Theoretical)</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Average Lead Time (Theoretical)</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
                <string>Average Demand</string>
               </property>
              </row>

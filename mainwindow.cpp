@@ -103,9 +103,11 @@ void MainWindow::display(int runs,int days,int minimumThreshold,int reviewPeriod
         ui->reviewPeriodLabel->setText("Review Periods (Sorted by Shortage Days, THS : "+QString::number(minimumThreshold));
           ui->resultsLabel->setText("Results : "+QString::number(runs) +" runs, "+QString::number(days)+" Days\n"+"Minimum Threshold : "+QString::number(minimumThreshold)+", Review Period : "+QString::number(reviewPeriod));
 
+           ui->resultsTable->setItem(0,0,new QTableWidgetItem(   QString::number(2)));
+           ui->resultsTable->setItem(1,0,new QTableWidgetItem(   QString::number(1.55)));
           for(int i=0;i<5;i++)
           {
-              ui->resultsTable->setItem(i,0,new QTableWidgetItem(   QString::number(runListUnsorted[minimumThreshold][reviewPeriod-1].second.second[i])  ));
+              ui->resultsTable->setItem(i+2,0,new QTableWidgetItem(   QString::number(runListUnsorted[minimumThreshold][reviewPeriod-1].second.second[i])  ));
           }
 
           ui->resultsTable->horizontalHeader()->setVisible(false);

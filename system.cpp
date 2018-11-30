@@ -31,6 +31,7 @@ void System::buildTables() {
     }
 }
 
+
 void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,int reviewPeriod,int minimumInventory)
 {
     this->days.clear();
@@ -71,8 +72,6 @@ void System::buildSystem(int days, int carsShowroomStart,int carsInventoryStart,
   }
 
 }
-
-
 
 int System::getDemand()
 {
