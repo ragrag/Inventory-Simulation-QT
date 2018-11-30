@@ -24,8 +24,12 @@ runwindow::runwindow(QWidget *parent,System sys) :
      {
          for(int j=0;j<8;j++)
          {
-
-            ui->calendarTable->setItem(i,j,new QTableWidgetItem(QString::number(system.days[i][j])));
+            if (j==7)
+            {
+                ui->calendarTable->setItem(i,j,new QTableWidgetItem(system.days[i][j]==0? "No" : "Yes"));
+            }
+            else
+                ui->calendarTable->setItem(i,j,new QTableWidgetItem(QString::number(system.days[i][j])));
          }
 
      }

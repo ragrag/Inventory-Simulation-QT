@@ -71,10 +71,10 @@ for(int i=1;i<=8;i++)
         systems.clear();
         for(int k=0;k<runs;k++)
         {
+
             sys.buildSystem(days,4,2,j,i);
             res = res+sys.calculateSystem();
             systems.push_back(sys);
-
         }
         res = res/runs;
 
